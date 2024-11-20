@@ -1,0 +1,2 @@
+class ScaryException(Exception):
+    pass

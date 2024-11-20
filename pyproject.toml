@@ -1,0 +1,52 @@
+[tool.pytest.ini_options]
+pythonpath = [
+    ".",
+    "./src"
+
+]
+asyncio_mode = "auto"
+
+
+[tool.flake8]
+ignore = ['W291', 'E126', 'W504', 'E203']
+per-file-ignores = ['__init__.py:F401']
+max-line-length = 120
+exclude = ['.venv', 'test.py', '.git', '__pycache__', 'venv']
+max-complexity = 10
+
+
+[tool.black]
+line-length = 120
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+    | k8s
+    | \.git
+    | \.venv
+    | venv
+    | test\.py
+  )/
+)
+'''
+
+[tool.mypy]
+python_version = "3.12"
+warn_unused_configs = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_ignores = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+ignore_missing_imports = true
+show_error_codes = true
+pretty = true
+no_implicit_optional = true
+strict_optional = true
+exclude = ["test.py"]
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+ignore_errors = true

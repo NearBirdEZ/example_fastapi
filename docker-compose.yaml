@@ -1,0 +1,16 @@
+services:
+  foo-service:
+    container_name: foo-service-cont
+    build:
+      context: .
+      dockerfile: Dockerfile
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 100M
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    restart: 'no'
